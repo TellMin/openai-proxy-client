@@ -1,9 +1,9 @@
 import type { PageServerLoad } from './$types';
 import { API, SECRET } from '$env/static/private';
-import { sign } from 'jsonwebtoken';
+import Jwt from 'jsonwebtoken';
 
 export const load = (() => {
-	const token = sign({}, SECRET, { expiresIn: '1d' });
+	const token = Jwt.sign({}, SECRET, { expiresIn: '1d' });
 
 	return {
 		token,
