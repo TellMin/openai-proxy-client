@@ -1,10 +1,13 @@
-<script>
+<script lang="ts">
 	import { useChat } from 'ai/svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	const { input, handleSubmit, messages } = useChat({
-		api: 'http://127.0.0.1:8787/',
+		api: data.api,
 		headers: {
-			Authorization: 'Bearer ' + 'token'
+			Authorization: `Bearer ${data.token}`
 		}
 	});
 </script>
