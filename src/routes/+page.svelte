@@ -42,4 +42,14 @@
 			{/each}
 		</ul>
 	</div>
+	<div>
+		<h2>previous messages</h2>
+		<ul>
+			{#if data.messages}
+				{#each data.messages as message}
+					<li>{message.role}: {message.content}</li>
+				{/each}
+			{/if}
+		</ul>
+	</div>
 </main>
