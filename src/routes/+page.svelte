@@ -10,6 +10,7 @@
 			Authorization: `Bearer ${data.token}`
 		},
 		onFinish: (responseMessage: Message) => {
+			saveResponseMessage($messages[$messages.length - 2]);
 			saveResponseMessage(responseMessage);
 		}
 	});

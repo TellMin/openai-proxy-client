@@ -8,8 +8,6 @@ export const load = (async () => {
 
 	const { data } = await supabase.from('messages').select('*');
 
-	console.log(data);
-
 	return {
 		token,
 		api: API,
