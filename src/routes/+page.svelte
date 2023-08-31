@@ -9,9 +9,9 @@
 		headers: {
 			Authorization: `Bearer ${data.token}`
 		},
-		onFinish: (responseMessage: Message) => {
-			saveResponseMessage($messages[$messages.length - 2]);
-			saveResponseMessage(responseMessage);
+		onFinish: async (responseMessage: Message) => {
+			await saveResponseMessage($messages[$messages.length - 2]);
+			await saveResponseMessage(responseMessage);
 		}
 	});
 
@@ -37,20 +37,19 @@
 			<input bind:value={$input} />
 			<button type="submit">Send</button>
 		</form>
-		<ul>
-			{#each $messages as message}
-				<li>{message.role}: {message.content}</li>
-			{/each}
-		</ul>
+		<ul />
 	</div>
 	<div>
-		<h2>previous messages</h2>
+		<h2>Messages</h2>
 		<ul>
 			{#if data.messages}
 				{#each data.messages as message}
 					<li>{message.role}: {message.content}</li>
 				{/each}
 			{/if}
+			{#each $messages as message}
+				<li>{message.role}: {message.content}</li>
+			{/each}
 		</ul>
 	</div>
 </main>
